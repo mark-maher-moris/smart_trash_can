@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'TrashIt',
       home: Text(
-        'hello trashit'
+        'hello test trashit'
       ) ,
     );
   }
