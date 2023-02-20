@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_trash_can/layout/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,8 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'TrashIt',
-      home: Text('1111111111111111111111111111111'),
+      home: HomeScreen(),
     );
   }
 }
