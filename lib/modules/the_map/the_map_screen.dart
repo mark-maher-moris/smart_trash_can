@@ -17,7 +17,7 @@ class TheMapScreen extends StatelessWidget {
               w: 220,
               c1: Colors.green,
               child: Text(
-                'Where is can ....',
+                'Where is basket ....',
                 style: TextStyle(
                   color: Colors.white
                 ),
