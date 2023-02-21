@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_trash_can/shared/components/components.dart';
 
 class TheMapScreen extends StatelessWidget
 {
@@ -7,7 +8,9 @@ class TheMapScreen extends StatelessWidget
   {
     return  Scaffold(
       body: Column(
-        children: [],
+        children: [
+          butomn(text: 'the map') ,
+        ],
       ),
     );
   }
