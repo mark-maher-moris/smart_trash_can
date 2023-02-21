@@ -1,4 +1,3 @@
-import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -17,7 +16,8 @@ Widget defaultFormField({
   var onSubmit,
   bool isPasswordShown = false,
   IconData? suffixIcon,
-}) => TextFormField(
+}) =>
+    TextFormField(
       onFieldSubmitted: onSubmit,
       controller: controller,
       obscureText: isPasswordShown,
@@ -38,14 +38,14 @@ Widget defaultFormField({
       validator: function,
     );
 
-
 Widget butomn({
   double width = double.infinity,
   required String text,
   bool isUpper = true,
   double radius = 15.0,
   final VoidCallback? function,
-}) =>Container(
+}) =>
+    Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
         color: Colors.green.withOpacity(.7),
@@ -60,19 +60,18 @@ Widget butomn({
       ),
     );
 
-
 // نستخدم my devider لو حبينا نعمل خط او ليست
 Widget myDivider() => Padding(
-  padding: const EdgeInsetsDirectional.only(
-    start: 10.0,
-    end: 10.0,
-  ),
-  child: Container(
-    height: 1.0,
-    width: double.infinity,
-    color: Colors.grey[300],
-  ),
-);
+      padding: const EdgeInsetsDirectional.only(
+        start: 10.0,
+        end: 10.0,
+      ),
+      child: Container(
+        height: 1.0,
+        width: double.infinity,
+        color: Colors.grey[300],
+      ),
+    );
 
 //نستخدمها لو حبينا نعمل navigate
 void navigateTo(context, Widget) => Navigator.push(
@@ -83,16 +82,17 @@ void navigateTo(context, Widget) => Navigator.push(
 
 //نستخدمها لو عايزين نعمل navigate بدون رجوع للصفحة اللي قبلها (في حالة ال on boarding )
 void navigateToAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
-  context,
-  MaterialPageRoute(builder: (context) => widget),
+      context,
+      MaterialPageRoute(builder: (context) => widget),
       (Route<dynamic> route) => false,
-);
+    );
 
 //ديه باكدج بتظهر رسالة على الشاشة
 void showToast({
   required String message,
   required ToastStates states,
-}) =>Fluttertoast.showToast(
+}) =>
+    Fluttertoast.showToast(
       msg: message,
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.BOTTOM,
@@ -120,26 +120,25 @@ Color shooseToastColor(ToastStates states) {
   return color;
 }
 
-
 Widget defultAppBar({
   required BuildContext context,
   String? title,
   List<Widget>? actions,
-}) => AppBar(
-  elevation: 0.0,
-  titleSpacing: 1.0,
-  leading: IconButton(
-    color: Colors.black,
-    icon : Icon(
-      IconBroken.Arrow___Left_2 ,
-    ),
-    onPressed: ()
-    {
-      Navigator.pop(context) ;
-    },
-  ) ,
-  title: Text(
-    '${title}' ,
-  ),
-  actions: actions,
-) ;
+}) =>
+    AppBar(
+      elevation: 0.0,
+      titleSpacing: 1.0,
+      leading: IconButton(
+        color: Colors.black,
+        icon: Icon(
+          IconBroken.Arrow___Left_2,
+        ),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+      title: Text(
+        '${title}',
+      ),
+      actions: actions,
+    );
