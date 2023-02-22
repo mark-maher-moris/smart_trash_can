@@ -89,6 +89,22 @@ class OrderDetailsScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Expanded(
+                        child: defaultFormField(
+                          textInputType:TextInputType.text,
+                          function: (String? value)
+                          {
+                            if(value!.isEmpty)
+                              return 'Please enter Apartment number ';
+                          },
+                          prefixIcon: IconBroken.Info_Circle,
+                          controller: homePlaceLocationController,
+                          lable: 'Apartment number',
+                        ),
+                      ),
+                    ),
                     myBox(
                       h: 50,
                       w: 250,
