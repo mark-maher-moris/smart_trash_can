@@ -3,6 +3,9 @@ import 'package:smart_trash_can/layout/code_screen.dart';
 import 'package:smart_trash_can/shared/components/components.dart';
 import 'package:smart_trash_can/shared/styles/themes.dart';
 
+import '../modules/the_map/the_map_screen.dart';
+import '../modules/trashs_deliver/trashs_deliver_screen_1.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -70,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         onClick: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => CodeScreen()));
+                              builder: (context) => TheMapScreen()));
                         }),
                     SizedBox(
                       height: 25,
@@ -86,7 +89,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         onClick: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => CodeScreen()));
+                              builder: (context) => TrashDeliverScreen()));
                         })
                   ]),
             ),

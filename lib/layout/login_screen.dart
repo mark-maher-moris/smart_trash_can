@@ -35,6 +35,7 @@ class Login extends StatelessWidget {
                 height: 60,
               ),
               custemTF(icn: Icons.phone, hintTxt: 'رقم التليفون'),
+              custemTF(icn: Icons.phone, hintTxt: 'الاسم'),
               myBox(
                   h: 50,
                   w: 150,

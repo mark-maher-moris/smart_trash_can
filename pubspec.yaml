@@ -42,7 +42,7 @@ flutter:
 
   
   assets:
-    - assets/
+    - lib/assets/
   fonts:
     - family: Anaqa
       fonts:
