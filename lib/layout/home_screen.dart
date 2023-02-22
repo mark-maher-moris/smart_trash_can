@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_trash_can/layout/code_screen.dart';
 import 'package:smart_trash_can/shared/components/components.dart';
 import 'package:smart_trash_can/shared/styles/themes.dart';
 
@@ -22,9 +23,18 @@ class HomeScreen extends StatelessWidget {
                         h: 150,
                         w: 150,
                         c1: mainColor,
-                        child: Text(
-                          "data",
-                          style: ourStyle,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "نقاطك",
+                              style: ourStyle.copyWith(fontSize: 24),
+                            ),
+                            Text(
+                              "50",
+                              style: ourStyle,
+                            ),
+                          ],
                         ),
                         isCircle: true),
                     SizedBox(
@@ -38,9 +48,13 @@ class HomeScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'رقم الحساب',
-                              style: ourStyle,
-                            )
+                              '01210153804',
+                              style: ourStyle.copyWith(fontSize: 16),
+                            ),
+                            Text(
+                              ': رقم الحساب',
+                              style: ourStyle.copyWith(fontSize: 16),
+                            ),
                           ],
                         )),
                     SizedBox(
@@ -53,7 +67,11 @@ class HomeScreen extends StatelessWidget {
                         child: Text(
                           "اقرب ماكينة ليك",
                           style: ourStyle,
-                        )),
+                        ),
+                        onClick: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => CodeScreen()));
+                        }),
                     SizedBox(
                       height: 25,
                     ),
@@ -65,7 +83,11 @@ class HomeScreen extends StatelessWidget {
                           "عندك زبالة ؟ \n نجيلك لحد البيت",
                           textAlign: TextAlign.center,
                           style: ourStyle,
-                        ))
+                        ),
+                        onClick: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => CodeScreen()));
+                        })
                   ]),
             ),
             Align(
