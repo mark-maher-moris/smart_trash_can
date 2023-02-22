@@ -45,7 +45,7 @@ Widget myBox({
   );
 }
 
-Widget custemTF({required IconData icn, final saved}) {
+Widget custemTF({required IconData icn, final saved, required String hintTxt}) {
   return Padding(
     padding: const EdgeInsets.all(15),
     child: TextFormField(
@@ -56,9 +56,11 @@ Widget custemTF({required IconData icn, final saved}) {
       },
       onSaved: saved,
       decoration: InputDecoration(
+          hintText: hintTxt,
+          hintStyle: TextStyle(fontFamily: 'Anaqa'),
           icon: Icon(
             icn,
-            color: mainColor,
+            color: Colors.black,
           ),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(15)),
