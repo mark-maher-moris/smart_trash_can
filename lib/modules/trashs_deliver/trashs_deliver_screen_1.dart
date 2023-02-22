@@ -20,7 +20,7 @@ class TrashDeliverScreen extends StatelessWidget {
                   'you have scraps ...',
                   style: TextStyle(
                     color: Colors.white,
-                    fontWeight: FontWeight.bold ,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -52,7 +52,7 @@ class TrashDeliverScreen extends StatelessWidget {
                             ),
                             child: Image(
                               image: AssetImage(
-                                "assets/rubbish.png",
+                                "lib/assets/rubbish.png",
                               ),
                               width: 150.0,
                               height: 150.0,
@@ -66,9 +66,7 @@ class TrashDeliverScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   'Plastic waste',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold
-                                  ),
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(
                                   height: 10.0,
@@ -171,7 +169,7 @@ class TrashDeliverScreen extends StatelessWidget {
                             ),
                             child: Image(
                               image: AssetImage(
-                                "assets/rubbish.png",
+                                "lib/assets/rubbish.png",
                               ),
                               width: 150.0,
                               height: 150.0,
@@ -185,9 +183,7 @@ class TrashDeliverScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   'Metal waste',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold
-                                  ),
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(
                                   height: 10.0,
@@ -290,7 +286,7 @@ class TrashDeliverScreen extends StatelessWidget {
                             ),
                             child: Image(
                               image: AssetImage(
-                                "assets/rubbish.png",
+                                "lib/assets/rubbish.png",
                               ),
                               width: 150.0,
                               height: 150.0,
@@ -304,9 +300,7 @@ class TrashDeliverScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   'Organic waste ',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold
-                                  ),
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(
                                   height: 10.0,
@@ -395,8 +389,8 @@ class TrashDeliverScreen extends StatelessWidget {
                       child: Text(
                         'Next',
                         style: TextStyle(
-                          color: Colors.white ,
-                          fontWeight: FontWeight.bold ,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
