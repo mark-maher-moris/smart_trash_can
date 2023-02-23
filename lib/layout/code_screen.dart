@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 import '../shared/styles/themes.dart';
 import 'home_screen.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 class CodeScreen extends StatelessWidget {
   const CodeScreen({super.key});
@@ -10,6 +11,12 @@ class CodeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(20),
+          child: AppBar(
+              systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: Colors.black,
+          ))),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -34,7 +41,7 @@ class CodeScreen extends StatelessWidget {
               SizedBox(
                 height: 60,
               ),
-              custemTF(icn: Icons.phone, hintTxt: 'الكود'),
+              PinWidget(),
               myBox(
                   h: 50,
                   w: 150,
@@ -52,5 +59,38 @@ class CodeScreen extends StatelessWidget {
         ),
       ),
     ));
+  }
+}
+
+class PinWidget extends StatelessWidget {
+  PinWidget({super.key});
+  int inputCode = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 13, right: 13),
+      child: PinCodeTextField(
+          autoFocus: true,
+          animationCurve: Curves.bounceOut,
+          keyboardType: TextInputType.number,
+          enablePinAutofill: true,
+          enableActiveFill: true,
+          pinTheme: PinTheme(
+              shape: PinCodeFieldShape.box,
+              borderRadius: BorderRadius.all(Radius.circular(15))),
+          autoDismissKeyboard: true,
+          appContext: context,
+          animationDuration: Duration(milliseconds: 300),
+          length: 6,
+          onCompleted: (val) {
+            inputCode = int.parse(val);
+            //circle loading
+            print(inputCode);
+          },
+          onChanged: (val) {
+            //inputCode = int.parse(val);
+            //print(inputCode);
+          }),
+    );
   }
 }
