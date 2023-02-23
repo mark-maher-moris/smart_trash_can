@@ -20,6 +20,7 @@ dependencies:
   #shared_preferences: ^2.0.15
   fluttertoast: ^8.1.1
   icon_broken: ^1.1.0
+  pin_code_fields: ^7.4.0
 
 
 
@@ -42,8 +43,8 @@ flutter:
 
   
   assets:
-    - assets/
+    - lib/assets/
   fonts:
     - family: Anaqa
       fonts:
-        - asset: assets/Anaqa-Semibold.ttf
+        - asset: lib/assets/Anaqa-Semibold.ttf

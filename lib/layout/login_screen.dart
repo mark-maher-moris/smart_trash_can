@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_trash_can/shared/styles/themes.dart';
-
+import 'package:icon_broken/icon_broken.dart';
 import 'code_screen.dart';
 
 class Login extends StatelessWidget {
@@ -34,7 +34,8 @@ class Login extends StatelessWidget {
               SizedBox(
                 height: 60,
               ),
-              custemTF(icn: Icons.phone, hintTxt: 'رقم التليفون'),
+              custemTF(icn: IconBroken.Call, hintTxt: 'رقم التليفون'),
+              custemTF(icn: IconBroken.User, hintTxt: 'الاسم'),
               myBox(
                   h: 50,
                   w: 150,
