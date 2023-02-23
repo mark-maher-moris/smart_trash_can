@@ -42,8 +42,8 @@ flutter:
 
   
   assets:
-    - lib/assets/
+    - assets/
   fonts:
     - family: Anaqa
       fonts:
-        - asset: lib/assets/Anaqa-Semibold.ttf
+        - asset: assets/Anaqa-Semibold.ttf

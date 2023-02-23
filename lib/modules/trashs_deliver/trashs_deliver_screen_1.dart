@@ -52,7 +52,7 @@ class TrashDeliverScreen extends StatelessWidget {
                             ),
                             child: Image(
                               image: AssetImage(
-                                "lib/assets/rubbish.png",
+                                "assets/rubbish.png",
                               ),
                               width: 150.0,
                               height: 150.0,
@@ -169,7 +169,7 @@ class TrashDeliverScreen extends StatelessWidget {
                             ),
                             child: Image(
                               image: AssetImage(
-                                "lib/assets/rubbish.png",
+                                "assets/rubbish.png",
                               ),
                               width: 150.0,
                               height: 150.0,
@@ -286,7 +286,7 @@ class TrashDeliverScreen extends StatelessWidget {
                             ),
                             child: Image(
                               image: AssetImage(
-                                "lib/assets/rubbish.png",
+                                "assets/rubbish.png",
                               ),
                               width: 150.0,
                               height: 150.0,

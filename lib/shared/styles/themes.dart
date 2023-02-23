@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-const String rubbish = 'lib/assets/rubbish.png';
+const String rubbish = 'assets/rubbish.png';
 const Color mainColor = Color.fromRGBO(54, 255, 4, 100);
 const Color glowColor = Color.fromRGBO(18, 145, 6, 1);
 const TextStyle ourStyle = TextStyle(
