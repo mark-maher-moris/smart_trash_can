@@ -10,7 +10,7 @@ class Login extends StatelessWidget {
 
   bool isLoading = false;
   AuthClass authObj = AuthClass();
-  String inputNumber = '102856230';
+  dynamic inputNumber = '102856230';
   @override
   Widget build(BuildContext context) {
     print(inputNumber);
@@ -34,28 +34,6 @@ class Login extends StatelessWidget {
                 SizedBox(
                   height: 60,
                 ),
-                TextFormField(
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'ادخل المطلوب هنا';
-                    }
-                  },
-                  onSaved: (val) {
-                    inputNumber = val!;
-                    print(inputNumber + "ffffffffffffff");
-                  },
-                  decoration: InputDecoration(
-                      hintStyle: TextStyle(fontFamily: 'Anaqa'),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                          borderSide: BorderSide(color: mainColor)),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                          borderSide: BorderSide(color: mainColor)),
-                      fillColor: mainColor,
-                      filled: true,
-                      focusColor: mainColor),
-                ),
                 Text(
                   "ملحوظة رقم التليفون سيكون هو رقم الحساب \nالذي ستضعه في سلة القمامة",
                   textAlign: TextAlign.center,
@@ -64,14 +42,13 @@ class Login extends StatelessWidget {
                 SizedBox(
                   height: 60,
                 ),
-                custemTF(
+                CustemTF(
                     icn: IconBroken.Call,
-                    hintTxt: ' رقم التليفون',
+                    hintTxt: 'رقم التليفون',
                     saved: (val) {
-                      inputNumber = val!;
-                      print(val);
+                      inputNumber = val;
                     }),
-                custemTF(
+                CustemTF(
                   icn: IconBroken.User,
                   hintTxt: 'الاسم',
                 ),
@@ -88,7 +65,7 @@ class Login extends StatelessWidget {
                           builder: (context) => CodeScreen()));
                       //authObj.signIn(inputNumber, 'd');
                       _globalKey.currentState?.validate();
-                      _globalKey.currentState?.save;
+                      _globalKey.currentState!.save;
                       print(inputNumber);
                     })
               ],

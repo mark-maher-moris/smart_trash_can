@@ -45,39 +45,48 @@ Widget myBox({
   );
 }
 
-Widget custemTF(
-    {required IconData icn,
-    final saved,
-    required String hintTxt,
-    Widget? brfx}) {
-  return Padding(
-    padding: const EdgeInsets.all(15),
-    child: TextFormField(
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'ادخل المطلوب هنا';
-        }
-      },
-      onSaved: saved,
-      decoration: InputDecoration(
-          prefix: brfx == null ? null : brfx,
-          hintText: hintTxt,
-          hintStyle: TextStyle(fontFamily: 'Anaqa'),
-          icon: Icon(
-            icn,
-            color: Colors.black,
-          ),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(15)),
-              borderSide: BorderSide(color: mainColor)),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(15)),
-              borderSide: BorderSide(color: mainColor)),
-          fillColor: mainColor,
-          filled: true,
-          focusColor: mainColor),
-    ),
-  );
+class CustemTF extends StatelessWidget {
+  IconData icn;
+  final saved;
+  String hintTxt;
+  Widget? brfx;
+  CustemTF(
+      {super.key,
+      required this.icn,
+      final this.saved,
+      required String this.hintTxt,
+      Widget? this.brfx});
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: TextFormField(
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'ادخل المطلوب هنا';
+          }
+        },
+        onSaved: saved,
+        decoration: InputDecoration(
+            prefix: brfx == null ? null : brfx,
+            hintText: hintTxt,
+            hintStyle: TextStyle(fontFamily: 'Anaqa'),
+            icon: Icon(
+              icn,
+              color: Colors.black,
+            ),
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+                borderSide: BorderSide(color: mainColor)),
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+                borderSide: BorderSide(color: mainColor)),
+            fillColor: mainColor,
+            filled: true,
+            focusColor: mainColor),
+      ),
+    );
+  }
 }
 
 /////////////////////////////////////////////////////////////////
