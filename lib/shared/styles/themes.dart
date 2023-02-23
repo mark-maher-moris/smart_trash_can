@@ -45,7 +45,11 @@ Widget myBox({
   );
 }
 
-Widget custemTF({required IconData icn, final saved, required String hintTxt}) {
+Widget custemTF(
+    {required IconData icn,
+    final saved,
+    required String hintTxt,
+    Widget? brfx}) {
   return Padding(
     padding: const EdgeInsets.all(15),
     child: TextFormField(
@@ -56,6 +60,7 @@ Widget custemTF({required IconData icn, final saved, required String hintTxt}) {
       },
       onSaved: saved,
       decoration: InputDecoration(
+          prefix: brfx == null ? null : brfx,
           hintText: hintTxt,
           hintStyle: TextStyle(fontFamily: 'Anaqa'),
           icon: Icon(

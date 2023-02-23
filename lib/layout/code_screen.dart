@@ -76,6 +76,7 @@ class PinWidget extends StatelessWidget {
           enablePinAutofill: true,
           enableActiveFill: true,
           pinTheme: PinTheme(
+              activeColor: mainColor,
               shape: PinCodeFieldShape.box,
               borderRadius: BorderRadius.all(Radius.circular(15))),
           autoDismissKeyboard: true,
