@@ -1,11 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:smart_trash_can/layout/code_screen.dart';
 import 'package:smart_trash_can/shared/components/components.dart';
 import 'package:smart_trash_can/shared/styles/themes.dart';
 import '../modules/the_map/the_map_screen.dart';
 import '../modules/trashs_deliver/trashs_deliver_screen_1.dart';
+import 'package:firebase_database/firebase_database.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  String number = '01210153804';
+  HomeScreen(this.number);
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  DatabaseReference ref = FirebaseDatabase.instance.ref();
+  //String number = '01210153804';
+  int points = 0;
+  @override
+  void initState() {
+    print(widget.number + "///////////////////------------");
+    getData();
+    super.initState();
+  }
+
+  Future<void> getData() async {
+    print(widget.number + "------------");
+
+    await ref.child('users/${widget.number}/points').onValue.listen((event) {
+      var data = event.snapshot.value;
+      setState(() {
+        print(data);
+        points = int.parse(data.toString());
+        print(points);
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                               style: ourStyle.copyWith(fontSize: 24),
                             ),
                             Text(
-                              "50",
+                              points.toString(),
                               style: ourStyle,
                             ),
                           ],

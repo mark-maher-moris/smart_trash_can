@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:smart_trash_can/layout/home_screen.dart';
 import 'package:smart_trash_can/shared/styles/themes.dart';
 import 'package:icon_broken/icon_broken.dart';
 import '../serveses/auth.dart';
-import 'code_screen.dart';
 
 class Login extends StatelessWidget {
   Login({super.key});
@@ -10,7 +11,7 @@ class Login extends StatelessWidget {
 
   bool isLoading = false;
   AuthClass authObj = AuthClass();
-  dynamic inputNumber = '102856230';
+  dynamic inputNumber = '';
   @override
   Widget build(BuildContext context) {
     print(inputNumber);
@@ -57,16 +58,23 @@ class Login extends StatelessWidget {
                     w: 150,
                     c1: mainColor,
                     child: Text(
-                      "ارسل كود التفعيل ",
+                      "دخول",
                       style: TextStyle(fontFamily: 'Anaqa'),
                     ),
                     onClick: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => CodeScreen()));
-                      //authObj.signIn(inputNumber, 'd');
-                      _globalKey.currentState?.validate();
+                          builder: (context) => HomeScreen(inputNumber)));
                       _globalKey.currentState!.save;
-                      print(inputNumber);
+
+                      if (_globalKey.currentState!.validate()) {
+                        try {} on PlatformException catch (e) {
+                          //authObj.signIn(inputNumber, 'd');
+
+                          print(e.toString());
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(e.message.toString())));
+                        }
+                      } else {}
                     })
               ],
             ),

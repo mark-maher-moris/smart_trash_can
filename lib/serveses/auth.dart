@@ -1,13 +1,25 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class AuthClass {
   FirebaseAuth instanse = FirebaseAuth.instance;
+  Future<void> verifyOTP(verfiId, smsCode) async {
+    await instanse.signInWithCredential(PhoneAuthProvider.credential(
+        verificationId: verfiId, smsCode: smsCode));
+  }
 
-  signIn(var number, var inputPin) {
+  Future<void> signIn({String? number, var inputPin, context, verId}) async {
     instanse.verifyPhoneNumber(
-        verificationCompleted: (PhoneAuthCredential credential) {},
-        verificationFailed: (FirebaseAuthException e) {},
-        codeSent: (String verificationId, int? resendToken) {},
+        timeout: Duration(seconds: 30),
+        verificationCompleted: (PhoneAuthCredential credential) {
+          snack(context: context, txt: "Auth complited");
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          snack(context: context, txt: "Auth Filled");
+        },
+        codeSent: (String verificationId, int? resendToken) {
+          verId = verificationId;
+        },
         codeAutoRetrievalTimeout: (String verificationId) {}
         //  verificationCompleted: (PhoneAuthCredential credential) async {}
         ///  await auth.signInWithCredential(credential);
@@ -15,4 +27,8 @@ class AuthClass {
     User? currentUser = instanse.currentUser;
     print(currentUser?.uid);
   }
+}
+
+void snack({txt, context}) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(txt)));
 }
