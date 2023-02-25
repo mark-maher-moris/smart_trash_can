@@ -50,10 +50,15 @@ class CustemTF extends StatelessWidget {
   final saved;
   String hintTxt;
   Widget? brfx;
+  var changed;
+  int max = 20;
+
   CustemTF(
       {super.key,
+      required this.max,
+      this.saved,
       required this.icn,
-      final this.saved,
+      final this.changed,
       required String this.hintTxt,
       Widget? this.brfx});
   @override
@@ -61,6 +66,8 @@ class CustemTF extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(15),
       child: TextFormField(
+        maxLength: max,
+        onChanged: changed,
         validator: (value) {
           if (value!.isEmpty) {
             return 'ادخل المطلوب هنا';

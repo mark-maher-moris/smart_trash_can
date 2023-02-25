@@ -1,406 +1,133 @@
 import 'package:flutter/material.dart';
 import 'package:smart_trash_can/shared/styles/themes.dart';
+import 'package:icon_broken/icon_broken.dart';
 
 class TrashDeliverScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding:
-            EdgeInsetsDirectional.symmetric(horizontal: 10.0, vertical: 50.0),
-        child: Container(
-          width: double.infinity,
-          child: Column(
-            children: [
-              myBox(
-                h: 100,
-                w: 220,
-                c1: Colors.green,
-                child: Text(
-                  'you have scraps ...',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+        body: Column(children: [
+      myBox(
+        h: 100,
+        w: 400,
+        c1: Colors.green,
+        child:
+            Text('عندك زبالة', style: ourStyle.copyWith(color: Colors.white)),
+      ),
+      SizedBox(
+        height: 20.0,
+      ),
+      SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            RubbishBox(txt: 'مخلفات معدنية', points: 200),
+            RubbishBox(txt: 'مخلفات بلاستيكية', points: 150),
+            RubbishBox(txt: 'مخلفات عضوية', points: 100),
+            myBox(
+                h: 50,
+                w: 100,
+                c1: Colors.white,
+                child: Text('ارسال الطلب'),
+                onClick: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => DoneScreen()));
+                })
+          ],
+        ),
+      )
+    ]));
+  }
+}
+
+class DoneScreen extends StatelessWidget {
+  const DoneScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: mainColor,
+      body: Center(
+          child: Text(
+        'تم استلام الطلب بنجاح',
+        style:
+            TextStyle(color: Colors.white, fontFamily: 'Anaqa', fontSize: 20),
+      )),
+    );
+  }
+}
+
+class RubbishBox extends StatefulWidget {
+  int points = 100;
+  String txt;
+
+  RubbishBox({required this.txt, required this.points, super.key});
+
+  @override
+  State<RubbishBox> createState() => _RubbishBoxState();
+}
+
+class _RubbishBoxState extends State<RubbishBox> {
+  var num = 1;
+
+  @override
+  Widget build(BuildContext context) {
+    return myBox(
+        h: 150,
+        w: 400,
+        c1: mainColor,
+        child: Row(
+          children: [
+            Image.asset(rubbish),
+            SizedBox(
+              width: 10,
+            ),
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    widget.txt,
+                    style: TextStyle(
+                        color: Colors.white, fontFamily: 'Anaqa', fontSize: 16),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Row(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              color: glowColor,
-                              blurRadius: 5,
-                              offset: Offset(0, 5))
-                        ],
-                        shape: BoxShape.rectangle,
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.green.withOpacity(.9),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: Image(
-                              image: AssetImage(
-                                "assets/rubbish.png",
-                              ),
-                              width: 150.0,
-                              height: 150.0,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Plastic waste',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(
-                                  height: 10.0,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 15.0,
-                                      child: Text(
-                                        '+',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      backgroundColor:
-                                          Colors.green.withOpacity(.7),
-                                    ),
-                                    SizedBox(
-                                      width: 10.0,
-                                    ),
-                                    Container(
-                                      width: 15.0,
-                                      decoration: BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: glowColor,
-                                              blurRadius: 18,
-                                              offset: Offset(0, 5))
-                                        ],
-                                        shape: BoxShape.rectangle,
-                                        color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        '1',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(fontSize: 16.0),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 10.0,
-                                    ),
-                                    CircleAvatar(
-                                      radius: 15.0,
-                                      child: Text(
-                                        '-',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      backgroundColor:
-                                          Colors.green.withOpacity(.7),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 10.0,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      '200',
-                                    ),
-                                    SizedBox(
-                                      width: 5.0,
-                                    ),
-                                    Text(
-                                      'Points',
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30.0,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              color: glowColor,
-                              blurRadius: 5,
-                              offset: Offset(0, 5))
-                        ],
-                        shape: BoxShape.rectangle,
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.green.withOpacity(.9),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: Image(
-                              image: AssetImage(
-                                "assets/rubbish.png",
-                              ),
-                              width: 150.0,
-                              height: 150.0,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Metal waste',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(
-                                  height: 10.0,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 15.0,
-                                      child: Text(
-                                        '+',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      backgroundColor:
-                                          Colors.green.withOpacity(.7),
-                                    ),
-                                    SizedBox(
-                                      width: 10.0,
-                                    ),
-                                    Container(
-                                      width: 15.0,
-                                      decoration: BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: glowColor,
-                                              blurRadius: 18,
-                                              offset: Offset(0, 5))
-                                        ],
-                                        shape: BoxShape.rectangle,
-                                        color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        '1',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(fontSize: 16.0),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 10.0,
-                                    ),
-                                    CircleAvatar(
-                                      radius: 15.0,
-                                      child: Text(
-                                        '-',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      backgroundColor:
-                                          Colors.green.withOpacity(.7),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 10.0,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      '200',
-                                    ),
-                                    SizedBox(
-                                      width: 5.0,
-                                    ),
-                                    Text(
-                                      'Points',
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30.0,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              color: glowColor,
-                              blurRadius: 5,
-                              offset: Offset(0, 5))
-                        ],
-                        shape: BoxShape.rectangle,
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.green.withOpacity(.9),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: Image(
-                              image: AssetImage(
-                                "assets/rubbish.png",
-                              ),
-                              width: 150.0,
-                              height: 150.0,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Organic waste ',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(
-                                  height: 10.0,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 15.0,
-                                      child: Text(
-                                        '+',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      backgroundColor:
-                                          Colors.green.withOpacity(.7),
-                                    ),
-                                    SizedBox(
-                                      width: 10.0,
-                                    ),
-                                    Container(
-                                      width: 15.0,
-                                      decoration: BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: glowColor,
-                                              blurRadius: 18,
-                                              offset: Offset(0, 5))
-                                        ],
-                                        shape: BoxShape.rectangle,
-                                        color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                      child: Text(
-                                        '1',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(fontSize: 16.0),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 10.0,
-                                    ),
-                                    CircleAvatar(
-                                      radius: 15.0,
-                                      child: Text(
-                                        '-',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      backgroundColor:
-                                          Colors.green.withOpacity(.7),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 10.0,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      '200',
-                                    ),
-                                    SizedBox(
-                                      width: 5.0,
-                                    ),
-                                    Text(
-                                      'Points',
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30.0,
-                    ),
                     myBox(
-                      h: 50,
-                      w: 250,
-                      c1: Colors.green,
-                      child: Text(
-                        'Next',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+                        onClick: () {
+                          setState(() {
+                            num++;
+                          });
+                        },
+                        h: 30,
+                        w: 30,
+                        c1: mainColor,
+                        child: Icon(IconBroken.Plus)),
+                    myBox(
+                        h: 30,
+                        w: 30,
+                        c1: Colors.white,
+                        child: Text(num.toString())),
+                    myBox(
+                        onClick: () {
+                          setState(() {
+                            num -= 1;
+                          });
+                        },
+                        h: 30,
+                        w: 30,
+                        c1: mainColor,
+                        child: Icon(IconBroken.Paper_Negative)),
                   ],
                 ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+                SizedBox(
+                  height: 15,
+                ),
+                Text(widget.points.toString() + "Points")
+              ],
+            ),
+          ],
+        ));
   }
 }

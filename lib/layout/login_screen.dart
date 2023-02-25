@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smart_trash_can/layout/home_screen.dart';
@@ -15,72 +16,82 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print(inputNumber);
-    return SafeArea(
-        child: Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          child: Form(
-            key: _globalKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 50,
-                ),
-                Text(
-                  'تسجيل الدخول',
-                  style: ourStyle.copyWith(fontSize: 35),
-                ),
-                SizedBox(
-                  height: 60,
-                ),
-                Text(
-                  "ملحوظة رقم التليفون سيكون هو رقم الحساب \nالذي ستضعه في سلة القمامة",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.red),
-                ),
-                SizedBox(
-                  height: 60,
-                ),
-                CustemTF(
-                    icn: IconBroken.Call,
-                    hintTxt: 'رقم التليفون',
-                    saved: (val) {
-                      inputNumber = val;
-                    }),
-                CustemTF(
-                  icn: IconBroken.User,
-                  hintTxt: 'الاسم',
-                ),
-                myBox(
-                    h: 50,
-                    w: 150,
-                    c1: mainColor,
-                    child: Text(
-                      "دخول",
-                      style: TextStyle(fontFamily: 'Anaqa'),
+    return FutureBuilder(
+        future: Firebase.initializeApp(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Text(snapshot.error.toString());
+          } else {
+            return SafeArea(
+              child: Scaffold(
+                body: Center(
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: _globalKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 50,
+                          ),
+                          Text(
+                            'تسجيل الدخول',
+                            style: ourStyle.copyWith(fontSize: 35),
+                          ),
+                          SizedBox(
+                            height: 60,
+                          ),
+                          Text(
+                            "اختار كود  مكون من 4 ارقام ",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.red, fontSize: 25),
+                          ),
+                          SizedBox(
+                            height: 60,
+                          ),
+                          CustemTF(
+                            max: 4,
+                            icn: IconBroken.Message,
+                            hintTxt: 'انشاء كود',
+                            // saved: (val) {
+                            //   inputNumber = val;
+                            // },
+                            changed: (val) {
+                              inputNumber = val;
+                              print(inputNumber);
+                            },
+                          ),
+                          CustemTF(
+                            max: 12,
+                            icn: IconBroken.User,
+                            hintTxt: 'الاسم',
+                          ),
+                          myBox(
+                              h: 50,
+                              w: 150,
+                              c1: mainColor,
+                              child: Text(
+                                "دخول",
+                                style: TextStyle(fontFamily: 'Anaqa'),
+                              ),
+                              onClick: () {
+                                isLoading = true;
+                                _globalKey.currentState!.save();
+                                print(inputNumber);
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => HomeScreen(
+                                          inputNumber,
+                                        )));
+                              })
+                        ],
+                      ),
                     ),
-                    onClick: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => HomeScreen(inputNumber)));
-                      _globalKey.currentState!.save;
-
-                      if (_globalKey.currentState!.validate()) {
-                        try {} on PlatformException catch (e) {
-                          //authObj.signIn(inputNumber, 'd');
-
-                          print(e.toString());
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(e.message.toString())));
-                        }
-                      } else {}
-                    })
-              ],
-            ),
-          ),
-        ),
-      ),
-    ));
+                  ),
+                ),
+              ),
+            );
+          }
+        });
   }
 }
